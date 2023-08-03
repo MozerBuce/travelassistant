@@ -17,6 +17,8 @@ app.get(`/:city_name`, (req, res) => {
     const encodedCityName = encodeURIComponent(city_name);
 
     // Fetch weather data using Axios
+    // const resposta = await axios.get(GEOCODING_API_ENDPOINT + `&q=${encodedCityName}` + `&appid=${OPENWEATHER_API_KEY}`)
+
     axios.get(GEOCODING_API_ENDPOINT + `&q=${encodedCityName}` + `&appid=${OPENWEATHER_API_KEY}`)
         .then(response => {
             const lat = response.data[0].lat;
