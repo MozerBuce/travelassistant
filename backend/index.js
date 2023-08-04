@@ -1,7 +1,11 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
+
 
 const app = express();
+app.use(cors());
+
 const port = 3000;
 
 const OPENWEATHER_API_KEY = "7928324f9ec5286e8b262ccd2c8d8531";
