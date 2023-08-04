@@ -34,7 +34,7 @@ npm install
 
 3. Run the project
 
-The backend is running on port 8080, you can use the command below to start the server and to start the frontend which uses port 30000
+The backend is running on port 8080, you can use the command below to start the server and to start the frontend which uses port 3000
 
 ```bash
 npm run dev
