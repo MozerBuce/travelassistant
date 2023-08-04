@@ -1,7 +1,5 @@
 # Travel assistant
 
-# [Demo](https://travelassistant-delta.vercel.app//)
-
 ## Description
 
 Welcome to this short web-app!
