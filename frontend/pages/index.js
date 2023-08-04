@@ -47,7 +47,7 @@ export default function Home() {
         <div className="container-xl py-5">
           <div className=" form-group row d-flex justiy-content-center align-items-center mb-5 ">
             <div className="col-sm-10">
-              <input placeholder="search for" type="search" id="searchText" name="searchText" className="form-control" required=""
+              <input placeholder="search using city name" type="search" id="searchText" name="searchText" className="form-control" required=""
                 onChange={(e) => setSearchTerm(e.target.value)}
                 value={searchTerm}
               />
