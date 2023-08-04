@@ -15,7 +15,7 @@ export default function Home() {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/${searchTerm}`);
+      const response = await fetch(`http://localhost:8080/${searchTerm}`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');

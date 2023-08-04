@@ -2,11 +2,10 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 
-
 const app = express();
 app.use(cors());
 
-const port = 3000;
+const port = 8080;
 
 const OPENWEATHER_API_KEY = "7928324f9ec5286e8b262ccd2c8d8531";
 const GEOCODING_API_ENDPOINT = "https://api.openweathermap.org/geo/1.0/direct?limit=1";
@@ -19,6 +18,10 @@ const EXCHANGERATE_API_ENDPOINT = "http://api.exchangeratesapi.io/v1/latest";
 app.get(`/:city_name`, (req, res) => {
     const city_name = req.params.city_name;
     const encodedCityName = encodeURIComponent(city_name);
+
+    if (!city_name) {
+        return res.status(400).send('Add a valid city name')
+    }
 
     // Fetch weather data using Axios
     // const resposta = await axios.get(GEOCODING_API_ENDPOINT + `&q=${encodedCityName}` + `&appid=${OPENWEATHER_API_KEY}`)
