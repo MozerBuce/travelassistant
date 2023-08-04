@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/maputo`);
+      const response = await fetch(`http://localhost:3000/${searchTerm}`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -23,17 +23,14 @@ export default function Home() {
 
       const data = await response.json();
 
-      setResult(data); 
+      setResult(data);
       setNoResults(false);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setNoResults(true); 
+      setNoResults(true);
 
     }
   };
-
-
-
 
   return (
     <div className={`${styles.container} container-fluid p-0`}>
@@ -72,58 +69,51 @@ export default function Home() {
               <p className='pb-0 mb-0'>No results found</p>
             </div>
           ) : (
-            <div className="">
-              { result && (
+            <div className="container-xl p-0">
+              {result && (
                 <div className="row w-100">
                   <div className="col-12 col-sm-6 col-md-4 px-2 py-1">
-                    <div className={`${styles.card} p-3`}>
-                    <p>Current weather: <strong>{result.actualweather}</strong></p>
+                    <div className={`${styles.card} p-3 d-flex flex-column justify-content-center align-items-center`}>
+                      <p className="p-0 m-0">Current</p>
+                      <strong>{result.actualweather}ºC</strong>
                     </div>
                   </div>
                   <div className="col-12 col-sm-6 col-md-4 px-2 py-1">
-                    <div className={`${styles.card} p-3`}>
-                      <p>Current weather: <strong>{result.actualweather}</strong></p>
+                    <div className={`${styles.card} p-3 d-flex flex-column justify-content-center align-items-center`}>
+                      <p className="p-0 m-0">max forecast first day: <strong>{result.day_i.max}ºC</strong></p>
+                      <p className="p-0 m-0">min forecast first day: <strong>{result.day_i.min}ºC</strong></p>
                     </div>
                   </div>
                   <div className="col-12 col-sm-6 col-md-4 px-2 py-1">
-                    <div className={`${styles.card} p-3`}>
-                      a
+                    <div className={`${styles.card} p-3 d-flex flex-column justify-content-center align-items-center`}>
+                      <p className="p-0 m-0">max forecast second day: <strong>{result.day_ii.max}ºC</strong></p>
+                      <p className="p-0 m-0">min forecast second day: <strong>{result.day_ii.min}ºC</strong></p>
                     </div>
                   </div>
                   <div className="col-12 col-sm-6 col-md-4 px-2 py-1">
-                    <div className={`${styles.card} p-3`}>
-                      a
+                    <div className={`${styles.card} p-3 d-flex flex-column justify-content-center align-items-center`}>
+                      <p className="p-0 m-0">max forecast third day: <strong>{result.day_iii.max}ºC</strong></p>
+                      <p className="p-0 m-0">min forecast third day: <strong>{result.day_iii.min}ºC</strong></p>
                     </div>
                   </div>
                   <div className="col-12 col-sm-6 col-md-4 px-2 py-1">
-                    <div className={`${styles.card} p-3`}>
-                      a
+                    <div className={`${styles.card} p-3 d-flex flex-column justify-content-center align-items-center`}>
+                      <p className="p-0 m-0">Exchange rate(EUR)</p>
+                      <strong>{result.exchange_rate} ({result.currencycode})</strong>
                     </div>
                   </div>
                   <div className="col-12 col-sm-6 col-md-4 px-2 py-1">
-                    <div className={`${styles.card} p-3`}>
-                      a
+                    <div className={`${styles.card} p-3 d-flex flex-column justify-content-center align-items-center`}>
+                      <p className="p-0 m-0">Population</p>
+                      <strong>{result.population}</strong>
                     </div>
                   </div>
-
-
                 </div>
               )}
             </div>
           )}
-
-
-
-
         </div>
       </div>
-
-      {/* <footer className="container-fluid bg-secondary text-white py-3 d-flex justify-content-center align-items-center">
-        <p>
-          Copyright © 2023 Almerino Buce
-        </p>
-      </footer> */}
-
     </div>
   )
 }
